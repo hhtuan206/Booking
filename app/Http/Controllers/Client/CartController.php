@@ -16,28 +16,30 @@ use App\Models\BillDetail;
 use App\Mail\MailNotify;
 class CartController extends Controller
 {
-  public function index()
-  {
+ public function index()
+ {
    return view('client/cart');
 }
 
 public function addCart($id,$qty)
 {
-   $product = Product::find($id);
-   $data = [
-      'id' => $product->id,
-      'name' => $product->name,
-      'qty' => $qty,
-      'price' => $product->price,
-      'weight' => 0,
-      'options'=> [
-         'image' => $product->image
-      ],
-   ];
-   Cart::add($data);
-   // return array(Cart::content());
-   dd(Cart::content());
-   return redirect()->back()->with('success', 'Thêm vào giỏ hàng thành công');   
+   $product = Product::findOrFail($id);
+   if($qty < $product->quantity){
+      $data = [
+         'id' => $product->id,
+         'name' => $product->name,
+         'qty' => $qty,
+         'price' => $product->price,
+         'weight' => 0,
+         'options'=> [
+            'image' => $product->image
+         ],
+      ];
+      Cart::add($data);
+      return redirect()->back()->with('success', 'Thêm thành công');
+   }
+   return redirect()->back()->with('fail', 'Thêm thất bại');
+   
 }
 
 public function destroyCart()
@@ -50,8 +52,14 @@ public function updateQty(Request $request)
 {
    $rowId = $request->rowId;
    $qty = $request->qty;
+   $product = Product::findOrFail($id);
+   if($qty > $product->quantity){
+      return redirect()->back()->with('fail', 'Cập nhật thất bại');
+
+   }
    Cart::update($rowId,$qty);
-   return redirect()->back();
+   return redirect()->back()->with('fail', 'Cập nhật thất bại');
+
 }
 
 
@@ -67,12 +75,13 @@ public function checkout()
    if(Auth::check()){
       $user = Auth::user();
    }
+   try{
       $bill = Bill::insertGetId([
-        'user_id' => $user->id,
-        'subtotal' => Cart::subtotal(),
-        'created_at' => date("Y-m-d h:i:s"),
-        'updated_at' => date("Y-m-d h:i:s"),
-     ]);
+       'user_id' => $user->id,
+       'subtotal' => Cart::subtotal(),
+       'created_at' => date("Y-m-d h:i:s"),
+       'updated_at' => date("Y-m-d h:i:s"),
+    ]);
 
       foreach(Cart::content() as $item){
          BillDetail::create([
@@ -84,9 +93,11 @@ public function checkout()
       }
 
       Mail::to($user->email)->send(new MailNotify($user,Cart::content(),Cart::subTotal()));
-
       Cart::destroy();
-      return redirect()->back()->with('messenge', 'Đặt hàng thành công'); 
+   }catch(Exception $e){
+      return redirect()->back()->with('Message', 'Đặt hàng thất bại');
+   }
+   return redirect()->back()->with('Message', 'Đặt hàng thành công'); 
 
 }
 

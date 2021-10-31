@@ -28,7 +28,7 @@ class ProductController extends AdminController
         $grid = new Grid(new Product());
         $grid->quickSearch('product_name');
         $grid->column('id', __('Id'));
-        $grid->column('product_name', __('Name'));
+        $grid->column('name', __('Name'));
         $grid->column('description', __('Description'));
         $grid->column('price', __('Price'));
         $grid->column('quantity', __('Quantity'));
@@ -77,7 +77,7 @@ class ProductController extends AdminController
     {
         $form = new Form(new Product());
 
-        $form->text('product_name', __('Name'));
+        $form->text('name', __('Name'));
         $form->ckeditor('description', __('Description'));
         $form->currency('price', __('Price'))->symbol('$');
         $form->number('quantity', __('Quantity'));

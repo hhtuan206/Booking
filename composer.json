@@ -16,7 +16,8 @@
         "laravel-admin-ext/ckeditor": "^1.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "laravel/ui": "1"
+        "laravel/ui": "1",
+        "whereislucas/laravel-bootstrap-toasts": "^1.06"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

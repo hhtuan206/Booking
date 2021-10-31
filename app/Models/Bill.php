@@ -11,6 +11,7 @@ class Bill extends Model
         'subtotal', 'user_id',
     ];
     //
+    
     public function billdetails()
     {
         return $this->hasMany(BillDetail::class,'bill_id');

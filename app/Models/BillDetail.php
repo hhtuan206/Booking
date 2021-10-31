@@ -10,8 +10,13 @@ class BillDetail extends Model
         'product_id', 'bill_id', 'quantity',
     ];
 
-    public function products()
+    public function product()
     {
        return $this->belongsTo(Product::class,'product_id');
+    }
+
+    public function bill()
+    {
+        return $this->belongsTo(Bill::class, 'bill_id');
     }
 }

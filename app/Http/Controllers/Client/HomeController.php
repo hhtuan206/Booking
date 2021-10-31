@@ -23,7 +23,7 @@ class HomeController extends Controller
     public function index()
     {
        $products = Product::inRandomOrder()->limit(8)->get();
-       $blogs = Blog::limit(3)->get();
+       $blogs = Blog::limit(8)->get();
        return view('client/index',compact('products','blogs'));
       
     }

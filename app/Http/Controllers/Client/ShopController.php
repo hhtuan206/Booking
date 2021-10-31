@@ -17,6 +17,7 @@ class ShopController extends Controller
 {
    public function __construct()
    {
+      
    }
 
    public function index()
@@ -29,12 +30,10 @@ class ShopController extends Controller
 
    public function category($category)
    {
-      $products = [];
-      $product_category = Category::find($category);
+     
+      $product_category = Category::findOrFail($category);
+      $products = $product_category->products()->paginate(4);
       $categories = Category::all();
-      foreach($product_category->products as $product){
-         array_push($products, $product);
-      }
       return view('client/shop',compact('products','categories'));
    }
 
@@ -50,9 +49,7 @@ class ShopController extends Controller
    {
       if ($request->search != '') {
         $data = Product::FullTextSearch('name', $request->search)->get();
-        foreach ($data as $key => $value) {
-           return view('client/single-product');
-        }
+        return view('client/search-result',compact('data'));
      }
   }
 }

@@ -78,6 +78,9 @@ padding: 0
     text-shadow: none;
 	color:#353535;
 }
+.form-row{
+  margin-bottom: 25px;
+}
 body {
     color: #444444;
     font-family: 'Poppins', sans-serif;
@@ -2477,4 +2480,11 @@ h3.widget-title-modal {
 }
 #scrollUp i {
   line-height: 40px;
+}
+
+.center-cropped {
+  width: 100px;
+  height: 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
 }

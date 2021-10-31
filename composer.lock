@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e164e27315c4ca53abeb36b4df36fc56",
+    "content-hash": "a70d5377366b7de85df3a5e36d054d85",
     "packages": [
         {
             "name": "bumbummen99/shoppingcart",
@@ -4995,6 +4995,64 @@
                 }
             ],
             "time": "2021-01-20T14:39:46+00:00"
+        },
+        {
+            "name": "whereislucas/laravel-bootstrap-toasts",
+            "version": "1.06",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WhereIsLucas/laravel-bootstrap-toasts.git",
+                "reference": "b604157f34a34c698ec89523965f0d60cc4df25b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WhereIsLucas/laravel-bootstrap-toasts/zipball/b604157f34a34c698ec89523965f0d60cc4df25b",
+                "reference": "b604157f34a34c698ec89523965f0d60cc4df25b",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.8|^6.0|^7.0|^8.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "^6.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "WhereIsLucas\\LaravelBootstrapToasts\\ToastServiceProvider"
+                    ],
+                    "aliases": {
+                        "Toast": "WhereIsLucas\\LaravelBootstrapToasts\\Toast"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "WhereIsLucas\\LaravelBootstrapToasts": "src/"
+                },
+                "files": [
+                    "src/WhereIsLucas/LaravelBootstrapToasts/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lucas Houssa",
+                    "email": "lucas@retinens.be"
+                }
+            ],
+            "description": "Bootstrap Laravel Flash Messages",
+            "support": {
+                "issues": "https://github.com/WhereIsLucas/laravel-bootstrap-toasts/issues",
+                "source": "https://github.com/WhereIsLucas/laravel-bootstrap-toasts/tree/1.06"
+            },
+            "time": "2020-10-26T09:09:37+00:00"
         }
     ],
     "packages-dev": [

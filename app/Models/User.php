@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Bill::class,'user_id');
     }
+
+    public function blogs()
+    {
+       return $this->hasMany('App\Models\Blog','author');
+    }
 }

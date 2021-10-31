@@ -69,22 +69,26 @@
                            <span class="inc qtybutton">+</span>	
                        </span>
                        <span>
-                        <a class="cart-btn btn-default" href="cart.html">
+                        <a class="cart-btn btn-default" href="{{route('cart.addCart',[$product->id,1])}}">
                             <i class="flaticon-shop"></i>
                             Add to cart
                         </a>
                     </span>
                 </div>
                
-                <div class="single-product-categories">
+                <div class="single-product-categories" style="margin-bottom:15px;margin-top: 15px;">
                  <label>Categories:</label>
                  <span>
                  @foreach($product->categories as $category)
-                 {{$category->category_name}},
+                 <a href="{{route('shop.category',$category->id)}}">{{$category->category_name}} </a>
                  @endforeach
              </span>
              </div>
-             <div class="social-share">
+             <div class="social-share" style="margin-bottom:15px;margin-top: 15px;">
+                <label>Author: </label>
+                    {{$product->author}}
+            </div>
+            <div class="social-share">
                 <label>Share: </label>
                 <ul class="social-share-icon">
                     <li><a href="#"><i class="flaticon-social"></i></a></li>

@@ -5,8 +5,8 @@
     <div class="slider-area">
      <div class="bend niceties preview-1">
       <div id="ensign-nivoslider" class="slides">	
-       <img src="img/slider/1.jpg" alt="" title="#slider-direction-1"  />
-       <img src="img/slider/2.jpg" alt="" title="#slider-direction-2"  />
+       <img src="https://fortbragglibrary.org/wp-content/uploads/2017/12/Book-banner.jpg" alt="" title="#slider-direction-1"  />
+       <img src="https://wallpapercave.com/wp/wp4650286.jpg" alt="" title="#slider-direction-2"  />
      </div>
      <!-- direction 1 -->
      <div id="slider-direction-1" class="text-center slider-direction">
@@ -21,13 +21,6 @@
       <!-- layer 3 -->
       <div class="layer-3">
         <a href="#" class="title-3">SEE MORE</a>
-      </div>
-      <!-- layer 4 -->
-      <div class="layer-4">
-        <form action="#" class="title-4">
-          <input type="text" placeholder="Enter your book title here">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
       </div>
     </div>
     <!-- direction 2 -->
@@ -45,12 +38,7 @@
       <a href="#" class="title-3">SEE MORE</a>
     </div>
     <!-- layer 4 -->
-    <div class="layer-4">
-      <form action="#" class="title-4">
-        <input type="text" placeholder="Enter your book title here">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
-    </div>
+  
   </div>
 </div>
 </div>
@@ -64,87 +52,31 @@
     </div>
     <div class="row">
       <div class="banner-list">
+        <?php $i = 0; ?>
+        @foreach($products as $product)
+        @if($i > 3)
+        @break
+        @endif
         <div class="col-md-4 col-sm-6">
           <div class="single-banner">
             <a href="#">
-              <img src="img/banner/1.jpg" alt="">
+              <img src="{{$product->image}}" alt="" width="350px" height="290px" >
             </a>
-            <div class="price"><span>$</span>160</div>
+            <div class="price"><span>$</span>{{$product->price}}</div>
             <div class="banner-bottom text-center">
-              <a href="#">NEW RELEASE 2016</a>
+              <a href="#">NEW RELEASE {{date('Y', strtotime($product->created_at))}}</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="single-banner">
-            <a href="#">
-              <img src="img/banner/2.jpg" alt="">
-            </a>
-            <div class="price"><span>$</span>160</div>
-            <div class="banner-bottom text-center">
-              <a href="#">NEW RELEASE 2016</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 hidden-sm">
-          <div class="single-banner">
-            <a href="#">
-              <img src="img/banner/3.jpg" alt="">
-            </a>
-            <div class="price"><span>$</span>160</div>
-            <div class="banner-bottom text-center">
-              <a href="#">NEW RELEASE 2016</a>
-            </div>
-          </div>
-        </div>
+         <?php $i++; ?>
+        @endforeach
       </div>
     </div>
   </div>
 </div>
 <!-- Online Banner Area End -->   
 <!-- Shop Info Area Start -->   
-<div class="shop-info-area">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-sm-6">
-        <div class="single-shop-info">
-          <div class="shop-info-icon">
-            <i class="flaticon-transport"></i>
-          </div>
-          <div class="shop-info-content">
-            <h2>FREE SHIPPING</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. </p>
-            <a href="#">READ MORE</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="single-shop-info">
-          <div class="shop-info-icon">
-            <i class="flaticon-money"></i>
-          </div>
-          <div class="shop-info-content">
-            <h2>FREE SHIPPING</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. </p>
-            <a href="#">READ MORE</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 hidden-sm">
-        <div class="single-shop-info">
-          <div class="shop-info-icon">
-            <i class="flaticon-school"></i>
-          </div>
-          <div class="shop-info-content">
-            <h2>FREE SHIPPING</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. </p>
-            <a href="#">READ MORE</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> 
+
 <!-- Shop Info Area End -->
 <!-- Featured Product Area Start -->
 <div class="featured-product-area section-padding">
@@ -155,9 +87,6 @@
         <div class="tab-menu">
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="first-item active">
-              <a href="#arrival" aria-controls="arrival" role="tab" data-toggle="tab">New Arrival</a>
-            </li>
           </ul>
         </div>         
       </div>
@@ -212,40 +141,7 @@
 </div>
 <!-- Featured Product Area End -->
 <!-- Testimonial Area Start -->
-<div class="testimonial-area text-center">
-  <div class="container">
-    <div class="testimonial-title">
-      <h2>OUR TESTIMONIAL</h2>
-      <p>What our clients say about the books reviews and comments</p>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="testimonial-list">
-          <div class="single-testimonial">
-           <img src="img/testimonial/1.jpg" alt="">
-           <div class="testmonial-info clearfix">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p> 
-            <div class="testimonial-author text-center">
-             <h3>JOHN DOE</h3>
-             <p>The Author</p>
-           </div>
-         </div>
-       </div>
-       <div class="single-testimonial">
-         <img src="img/testimonial/2.jpg" alt="">
-         <div class="testmonial-info clearfix">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p> 
-          <div class="testimonial-author text-center">
-           <h3>Ashim Kumar</h3>
-           <p>CEO</p>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
-</div>
-</div>
-</div>
+
 <!-- Testimonial Area End -->
 <!-- Counter Area Start -->
 <div class="counter-area section-padding text-center">
@@ -302,90 +198,22 @@
   <div class="container">
     <div class="row">
       <div class="blog-list indicator-style">
+        @foreach($blogs as $blog)
         <div class="col-md-3">
           <div class="single-blog">
             <a href="single-#">
-              <img src="img/blog/1.jpg" alt="">
+              <img src="{{$blog->image}}" alt="" width="263px" height="194px">
             </a>
             <div class="blog-info text-center">
-              <a href="#"><h2>Modern Book Reviews</h2></a>
+              <a href="#"><h2>{{$blog->title}}</h2></a>
               <div class="blog-info-bottom">
-                <span class="blog-author">BY: <a href="#">LATEST BLOG</a></span>
-                <span class="blog-date">19TH JAN 2016</span>
+                <span class="blog-author">BY: <a href="#">{{$blog->user->name}}</a></span>
+                <span class="blog-date">{{date('d-m-Y', strtotime($blog->created_at))}}</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="single-blog">
-            <a href="single-#">
-              <img src="img/blog/2.jpg" alt="">
-            </a>
-            <div class="blog-info text-center">
-              <a href="#"><h2>Modern Book Reviews</h2></a>
-              <div class="blog-info-bottom">
-                <span class="blog-author">BY: <a href="#">ZARIF SUNI</a></span>
-                <span class="blog-date">19TH JAN 2016</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="single-blog">
-            <a href="single-#">
-              <img src="img/blog/3.jpg" alt="">
-            </a>
-            <div class="blog-info text-center">
-              <a href="#"><h2>Modern Book Reviews</h2></a>
-              <div class="blog-info-bottom">
-                <span class="blog-author">BY: <a href="#">ZARIF SUNI</a></span>
-                <span class="blog-date">19TH JAN 2016</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="single-blog">
-            <a href="single-#">
-              <img src="img/blog/4.jpg" alt="">
-            </a>
-            <div class="blog-info text-center">
-              <a href="#"><h2>Modern Book Reviews</h2></a>
-              <div class="blog-info-bottom">
-                <span class="blog-author">BY: <a href="#">ZARIF SUNI</a></span>
-                <span class="blog-date">19TH JAN 2016</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="single-blog">
-            <a href="single-#">
-              <img src="img/blog/1.jpg" alt="">
-            </a>
-            <div class="blog-info text-center">
-              <a href="#"><h2>Modern Book Reviews</h2></a>
-              <div class="blog-info-bottom">
-                <span class="blog-author">BY: <a href="#">ZARIF SUNI</a></span>
-                <span class="blog-date">19TH JAN 2016</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="single-blog">
-            <a href="single-#">
-              <img src="img/blog/2.jpg" alt="">
-            </a>
-            <div class="blog-info text-center">
-              <a href="#"><h2>Modern Book Reviews</h2></a>
-              <div class="blog-info-bottom">
-                <span class="blog-author">BY: <a href="#">ZARIF SUNI</a></span>
-                <span class="blog-date">19TH JAN 2016</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </div>

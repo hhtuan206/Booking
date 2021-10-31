@@ -12,9 +12,10 @@
         <!-- Place favicon.ico in the root directory -->
         <!-- Google Fonts -->
         <link href='https://fonts.googleapis.com/css?family=Poppins:400,700,600,500,300' rel='stylesheet' type='text/css'>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- all css here -->
         <!-- bootstrap v3.3.6 css -->
+        
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <!-- animate css -->
         <link rel="stylesheet" href="{{asset('css/animate.css')}}">
@@ -59,33 +60,38 @@
                             <ul>
 
                                 <li>
-                                 @if (Route::has('login'))
-                                 @auth
-                                 <a href="{{ route('index')}}"><i class="flaticon-people"></i></a>
-                                 @else
-                                 <a href="{{ route('login')}}"><i class="flaticon-people"></i></a>
-                                 @if (Route::has('register'))
-                                 <a href="{{ route('register') }}"></a>
-                                 @endif
-                                 @endauth
-                                 @endif
-                             </li>
+                                   @if (Route::has('login'))
+                                   @auth
+                                   <a href="{{ route('index')}}"><i class="flaticon-people"></i></a>
+                                   @else
+                                   <a href="{{ route('login')}}"><i class="flaticon-people"></i></a>
+                                   @if (Route::has('register'))
+                                   <a href="{{ route('register') }}"></a>
+                                   @endif
+                                   @endauth
+                                   @endif
+                               </li>
 
 
-                         </ul>
-                     </div>
-                 </div>                    
-                 <div class="col-md-9 col-sm-12 hidden-xs">
+                           </ul>
+                       </div>
+                   </div>                    
+                   <div class="col-md-9 col-sm-12 hidden-xs">
                     <div class="mainmenu text-center">
                         <nav>
                             <ul id="nav">
                                 <li><a href="{{route('index')}}">HOME</a></li>
                                 <li><a href="{{route('shop.index')}}">FEATURED</a></li>
-                                <li><a href="{{route('blog')}}">REVIEW BOOK</a></li>
+                                <li><a href="{{route('blog.index')}}">REVIEW BOOK</a></li>
                                 <li><a href="{{route('about')}}">ABOUT AUTHOR</a></li>
-                                <li><a href="">pages</a>
+                                <li><a href="{{route('contact')}}">CONTACT</a>
                                 </li>
-                                <li><a href="{{route('contact')}}">CONTACT</a></li>
+                                @if(Auth::check())
+                                    <li><a href="/logout">Logout</a></li>
+                                @else
+                                    <li><a href="/login">Login</a></li>
+                                @endif
+                                
                             </ul>
                         </nav>
                     </div>                        
@@ -95,18 +101,18 @@
                         <ul>
                             @if (Route::has('login'))
                             <li>
-                             @auth
-                             <a href="{{ route('profile.index')}}"><i class="flaticon-people"></i></a>
-                             @else
-                             <a href="{{ route('login')}}"><i class="flaticon-people"></i></a>
-                             @if (Route::has('register'))
-                             <a href="{{ route('register') }}"></a>
-                             @endif
-                             @endauth
+                               @auth
+                               <a href="{{ route('profile.index')}}"><i class="flaticon-people"></i></a>
+                               @else
+                               <a href="{{ route('login')}}"><i class="flaticon-people"></i></a>
+                               @if (Route::has('register'))
+                               <a href="{{ route('register') }}"></a>
+                               @endif
+                               @endauth
 
-                         </li>
-                         @endif
-                         <li class="shoping-cart">
+                           </li>
+                           @endif
+                           <li class="shoping-cart">
                             <a href="{{route('cart.index')}}">
                                 <i class="flaticon-shop"></i>
                                 <span>{{Cart::content()->count()}}</span>
@@ -352,5 +358,6 @@
     <script src="{{asset('lib/home.js')}}" type="text/javascript"></script>
     <!-- main js -->
     <script src="{{asset('js/main.js')}}"></script>
+    
 </body>
 </html>
