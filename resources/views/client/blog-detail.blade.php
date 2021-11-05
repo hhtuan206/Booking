@@ -5,7 +5,7 @@
 	<div class="blog-header">
 		<h1 class="blog-title">{{$blog->title}}</h1>
 		<p class="lead blog-description text-center">
-			<img src="{{asset($blog->image)}}" alt="" width="250px" height="150px" >
+			<img src="{{asset($blog->image)}}" alt="" width="350px" height="450px" >
 		</p>
 		<div class="row">
 			<div class="col-sm-12 blog-main">

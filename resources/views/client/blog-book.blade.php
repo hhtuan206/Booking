@@ -49,13 +49,13 @@
 				<div class="card mb-3" style="max-width: 540px;">
 					<div class="row no-gutters">
 						<div class="col-md-4">
-							<img src="{{asset($blog->image)}}" alt="" class="bd-placeholder-img" width="150px" height="250px">
+							<img src="{{asset($blog->image)}}" alt="" class="bd-placeholder-img" width="350px" height="250px">
 						</div>
 						<div class="col-md-8">
 							<div class="card-body">
 
 								<a class="card-title" href="{{route('blog.read',$blog->id)}}"><h5>{{$blog->title}}</h5></a>
-								<p class="card-text">{!! $blog->content !!}</p>
+								<p class="card-text">{!! Str::limit($blog->content, 150, $end='...') !!}</p>
 								<p class="card-text">{{$blog->user->name}}</p>
 								<p class="card-text"><small class="text-muted">Last update at {{date('d-m-Y', strtotime($blog->updated_at))}}</small></p>
 							</div>

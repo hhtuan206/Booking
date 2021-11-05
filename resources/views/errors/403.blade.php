@@ -65,14 +65,14 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-           
+
 
             <div class="content">
                 <div class="title m-b-md">
                     <a href="{{ route('index') }}" style="text-decoration: none; color: #0060B6;"> Bạn không có quyền truy cập trang này</a>
                 </div>
 
-                
+
             </div>
         </div>
     </body>

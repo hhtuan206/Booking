@@ -52,7 +52,7 @@
     </div>
     <div class="row">
       <div class="banner-list">
-        <?php $i = 0; ?>
+        <?php $i = 1; ?>
         @foreach($products as $product)
         @if($i > 3)
         @break
@@ -60,7 +60,7 @@
         <div class="col-md-4 col-sm-6">
           <div class="single-banner">
             <a href="#">
-              <img src="{{$product->image}}" alt="" width="350px" height="290px" >
+              <img src="{{$product->image}}" alt="" width="350px" height="350px" >
             </a>
             <div class="price"><span>$</span>{{$product->price}}</div>
             <div class="banner-bottom text-center">
@@ -101,7 +101,7 @@
                 <div class="single-banner">
                   <div class="product-wrapper">
                     <a href="#" class="single-banner-image-wrapper">
-                      <img alt="" src="{{asset($product->image)}}" width="270px" height="280px" style="display:block; width: 260px; height: 270px;">
+                      <img alt="" src="{{asset($product->image)}}" width="270px" height="380px" style="display:block; width: 260px; height: 270px;">
                       <img style="position: absolute;
                       margin: auto;
                       top: 0;
@@ -202,7 +202,7 @@
         <div class="col-md-3">
           <div class="single-blog">
             <a href="single-#">
-              <img src="{{$blog->image}}" alt="" width="263px" height="194px">
+              <img src="{{$blog->image}}" alt="" width="250px" height="350px">
             </a>
             <div class="blog-info text-center">
               <a href="#"><h2>{{$blog->title}}</h2></a>
