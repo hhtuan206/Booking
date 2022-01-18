@@ -17,7 +17,6 @@ class ProductsTabbleSeeder extends Seeder
         for ($i = 0; $i < $limit; $i++) {
             DB::table('products')->insert([
                 'name' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-                'author' => $faker->name,
                 'description' => $faker->paragraph,
                 'price' => $faker->numberBetween($min = 1500, $max = 6000),
                 'quantity' => $faker->randomDigit,

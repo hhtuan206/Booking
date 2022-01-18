@@ -15,7 +15,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- all css here -->
         <!-- bootstrap v3.3.6 css -->
-        
+
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <!-- animate css -->
         <link rel="stylesheet" href="{{asset('css/animate.css')}}">
@@ -51,7 +51,7 @@
                     <div class="col-md-2 col-sm-6 col-xs-6">
                         <div class="header-logo">
                             <a href="/">
-                                <img src="{{asset($site->content->Logo)}}" alt="">
+                                <img src="{{asset($site->content->Logo)}}" alt="" width="200px" height="50px">
                             </a>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
 
                            </ul>
                        </div>
-                   </div>                    
+                   </div>
                    <div class="col-md-9 col-sm-12 hidden-xs">
                     <div class="mainmenu text-center">
                         <nav>
@@ -91,10 +91,10 @@
                                 @else
                                     <li><a href="/login">Login</a></li>
                                 @endif
-                                
+
                             </ul>
                         </nav>
-                    </div>                        
+                    </div>
                 </div>
                 <div class="col-md-1 hidden-sm">
                     <div class="header-right">
@@ -192,8 +192,8 @@
                 </div>
             </div>
         </div>
-    </div>      
-    <!-- Mobile Menu End -->   
+    </div>
+    <!-- Mobile Menu End -->
     @yield('content')
     <!-- Footer Area Start -->
     <footer>
@@ -337,7 +337,7 @@
     <script src="{{asset('js/jquery-ui.min.js')}}"></script>
     <!-- jquery Counterup js -->
     <script src="{{asset('js/jquery.counterup.min.js')}}"></script>
-    <script src="{{asset('js/waypoints.min.js')}}"></script> 
+    <script src="{{asset('js/waypoints.min.js')}}"></script>
     <!-- jquery countdown js -->
     <script src="{{asset('js/jquery.countdown.min.js')}}"></script>
     <!-- jquery countdown js -->
@@ -345,11 +345,11 @@
     <!-- jquery Meanmenu js -->
     <script src="{{asset('js/jquery.meanmenu.js')}}"></script>
     <!-- wow js -->
-    <script src="{{asset('js/wow.min.js')}}"></script>   
+    <script src="{{asset('js/wow.min.js')}}"></script>
     <script>
         new WOW().init();
     </script>
-    <!-- scrollUp JS -->        
+    <!-- scrollUp JS -->
     <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
     <!-- plugins js -->
     <script src="{{asset('js/plugins.js')}}"></script>
@@ -358,6 +358,6 @@
     <script src="{{asset('lib/home.js')}}" type="text/javascript"></script>
     <!-- main js -->
     <script src="{{asset('js/main.js')}}"></script>
-    
+
 </body>
 </html>
