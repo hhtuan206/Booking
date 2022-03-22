@@ -7,10 +7,10 @@ class Blog extends Model
 {
     //
      protected $fillable = [
-        'title', 'author', 'content','image',
+        'title', 'user_id', 'content','image',
     ];
 
-    public function user()
+    public function users()
     {
       return $this->belongsTo(User::class, 'user_id');
     }

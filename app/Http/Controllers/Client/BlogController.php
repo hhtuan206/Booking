@@ -34,10 +34,9 @@ class BlogController extends Controller
           $user = Auth::user();
         }
         $path = $request->file('image')->store('images', 'admin');
-        // dd($request);
         Blog::create([
-            'title' => $request->title,
-            'author' => $user->id,
+            'tittle' => $request->title,
+            'user_id' => $user->id,
             'content' => $request->content,
             'image' => $path,
         ]);

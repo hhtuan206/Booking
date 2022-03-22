@@ -59,7 +59,6 @@
                         <div class="availability">
                             <span>In stock</span>
                         </div>
-                        <p>{!! Str::limit($product->description,200,$end='...') !!}</p>
                         <div class="single-product-price">
                             <h2>${{$product->price}}</h2>
                         </div>

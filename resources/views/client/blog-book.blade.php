@@ -56,7 +56,7 @@
 
 								<a class="card-title" href="{{route('blog.read',$blog->id)}}"><h5>{{$blog->title}}</h5></a>
 								<p class="card-text">{!! Str::limit($blog->content, 150, $end='...') !!}</p>
-								<p class="card-text">{{$blog->user->name}}</p>
+								<p class="card-text">{{$blog->users->name}}</p>
 								<p class="card-text"><small class="text-muted">Last update at {{date('d-m-Y', strtotime($blog->updated_at))}}</small></p>
 							</div>
 						</div>

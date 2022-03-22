@@ -30,6 +30,7 @@ class BillController extends AdminController
     {
 
         $grid = new Grid(new Bill());
+
         $grid->column('id', __('ID'));
         $grid->column('users.name');
         $grid->column('shipment');
@@ -41,9 +42,9 @@ class BillController extends AdminController
         $grid->column('subtotal', __('Subtotal'));
         $grid->column('created_at', __('Created at'));
 
-        $grid->quickSearch('users.name');
         $grid->filter(function ($filter) {
             $filter->disableIdFilter();
+            $filter->like('users.name', "Username");
             $filter->between('created_at', "Create At")->datetime();
         });
         $grid->export(function ($export) {
