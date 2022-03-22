@@ -19,7 +19,7 @@ class ProductsTabbleSeeder extends Seeder
                 'name' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                 'description' => $faker->paragraph,
                 'price' => $faker->numberBetween($min = 1500, $max = 6000),
-                'quantity' => $faker->randomDigit,
+                'stock' => $faker->randomDigit,
                 'created_at' => date("Y/m/d"),
                 'updated_at' => date("Y/m/d"),
             ]);

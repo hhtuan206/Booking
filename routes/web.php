@@ -48,7 +48,7 @@ Route::get('/site','Client\SiteController@index')->name('site.index');
 
 Route::get('/profile','Client\UserController@index')->name('profile.index');
 
-Route::post('/search','Client\ShopController@searchFullText');
+Route::post('/search','Client\ShopController@search');
 
 Route::get('/blog/create','Client\BlogController@create')->name('blog.create')->middleware('auth');
 

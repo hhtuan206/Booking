@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-md-12 col-sm-3">
 				<div class="breadcrumbs">
-					<h2>Review Book</h2> 
+					<h2>Review Book</h2>
 					<ul class="breadcrumbs-list">
 						<li>
 							<a title="Return to Home" href="index.html">Home</a>
@@ -64,7 +64,7 @@
 				</div>
 			</div>
 			@endforeach
-		</div>	
+		</div>
 		<div class="row" style="margin-top: 20px; align-content: center;">
 			{{$blogs->links()}}
 		</div>

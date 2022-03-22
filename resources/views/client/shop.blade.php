@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Mobile Menu End -->   
+<!-- Mobile Menu End -->
 <!-- Breadcrumbs Area Start -->
 <div class="breadcrumbs-area">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="breadcrumbs">
-					<h2>SHOP LEFT SIDEBAR</h2> 
+					<h2>SHOP LEFT SIDEBAR</h2>
 					<ul class="breadcrumbs-list">
 						<li>
 							<a title="Return to Home" href="index.html">Home</a>
@@ -19,8 +19,8 @@
 			</div>
 		</div>
 	</div>
-</div> 
-<!-- Breadcrumbs Area Start --> 
+</div>
+<!-- Breadcrumbs Area Start -->
 <!-- Shop Area Start -->
 <div class="shopping-area section-padding">
 	<div class="container">
@@ -54,17 +54,18 @@
 								<li>
 									<a href="{{route('shop.category',$category->id)}}">
 										<i class="fa fa-angle-double-right"></i>
-										{{$category->category_name}}
+										{{$category->name}}
 									</a>
 								</li>
 								@endforeach
 							</ul>
-						</aside> 
-						                           
+						</aside>
+
 					</div>
-					
+
 				</div>
 			</div>
+
 
 			<div class="col-md-9 col-sm-9 col-xs-12">
 				<div class="shop-tab-area">
@@ -81,11 +82,11 @@
 									<form id="header-search" class="form-inline my-2 my-lg-0" method="post" action="/search">
 										@csrf
 										<input class="form-control mr-sm-2 m-input" type="search" placeholder="Search" aria-label="Search" name="search">
-										<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+										<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search">Search</button>
 										<div id="search-suggest" class="s-suggest"></div>
 									</form>
 								</li>
-								
+
 							</ul>
 						</div>
 					</div>
@@ -102,7 +103,7 @@
 												top: 0;
 												left: 0;
 												right: 0;
-												bottom: 0;" 
+												bottom: 0;"
 												alt="" src="{{asset($product->image)}}" >
 												<div class="price"><span>$</span>{{$product->price}}</div>
 											</a>
@@ -189,23 +190,12 @@
 	</div>
 </div>
 </div>
-<!-- Shop Area End -->   
+<!-- Shop Area End -->
 <script type="text/javascript">
-	$('#header-search').on('keyup', function() {
-		var search = $(this).serialize();
-		if ($(this).find('.m-input').val() == '') {
-			$('#search-suggest div').hide();
-		} else {
-			$.ajax({
-				url: '/search',
-				type: 'post',
-				data: search,
-			})
-			.done(function(res) {
-				$('#search-suggest').html('');
-				$('#search-suggest').append(res)
-			})
-		};
-	});
+	$(document).ready(function (){
+        $("#search").onclick(function (){
+            $("#header-search").submit();
+        })
+    });
 </script>
 @endsection

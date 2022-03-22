@@ -8,11 +8,11 @@ class Category extends Model
 {
 
     protected $fillable = [
-        'category_name',
+        'name',
     ];
     //
      public function products()
     {
-        return $this->belongsToMany('App\Models\Product','product_category');
+        return $this->belongsToMany(Product::class,'product_category');
     }
 }

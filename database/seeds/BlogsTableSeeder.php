@@ -18,7 +18,7 @@ class BlogsTableSeeder extends Seeder
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('blogs')->insert([
-                'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+                'tittle' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                 'user_id' => 1,
                 'content' => $faker->paragraphs($nb = 10, $asText = true)   ,
                 'created_at' => date("Y/m/d"),

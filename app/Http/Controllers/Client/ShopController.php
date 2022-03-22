@@ -14,7 +14,6 @@ class ShopController extends Controller {
 	public function index() {
 		$products = Product::paginate(6);
 		$categories = Category::all();
-
 		return view('client/shop', compact('products', 'categories'));
 	}
 
@@ -32,10 +31,14 @@ class ShopController extends Controller {
 		return view('client/single-product', compact('product', 'products'));
 	}
 
-	public function searchFullText(Request $request) {
-		if ($request->search != '') {
-			$data = Product::FullTextSearch('name', $request->search)->get();
-			return view('client/search-result', compact('data'));
+	public function search(Request $request) {
+		if ($request->search == '') {
+            $products = Product::paginate(6);
+            $categories = Category::all();
+            return view('client/shop', compact('products', 'categories'));
 		}
+        $products = Product::where('name','like','%' . $request->search . '%')->paginate(6);
+        $categories = Category::all();
+        return view('client/shop', compact('products', 'categories'));
 	}
 }

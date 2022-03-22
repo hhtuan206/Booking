@@ -18,4 +18,8 @@ Route::group([
     $router->resource('categories', CategoryController::class);
     $router->resource('sites', SiteController::class);
     $router->resource('bills', BillController::class);
+    $router->resource('authors', AuthorController::class);
+    $router->resource('nxbs', NxbController::class);
+
+
 });

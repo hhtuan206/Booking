@@ -25,12 +25,17 @@ class SiteController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Site());
-
-        $grid->column('id', __('Id'));
-        $grid->column('content', __('Content'));
+        $grid->column('address', __('Address'));
+        $grid->column('phone', __('Phone'));
+        $grid->column('email', __('Email'));
+        $grid->column('logo', __('Image'))->image('', 100, 100);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
+        $grid->actions(function ($actions) {
+            $actions->disableDelete();
 
+        });
+        $grid->disableCreation();
         return $grid;
     }
 
@@ -45,7 +50,10 @@ class SiteController extends AdminController
         $show = new Show(Site::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('content', __('Content'));
+        $show->field('phone', __('phone'));
+        $show->field('email', __('email'));
+        $show->field('logo', __('logo'))->image('',150,50);
+        $show->field('address', __('address'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -60,14 +68,10 @@ class SiteController extends AdminController
     protected function form()
     {
         $form = new Form(new Site());
-
-        $form->embeds('content',__('Content'), function ($form) {
-            $form->image('Logo')->value('logo.png');
-            $form->mobile('Phone')->rules('required');
-            $form->email('Email')->rules('required');
-            $form->textarea('Address')->rules('required');
-        });
-
-       return $form;
-   }
+        $form->image('logo')->value('logo.png');
+        $form->mobile('phone')->rules('required');
+        $form->email('email')->rules('required');
+        $form->textarea('address')->rules('required');
+        return $form;
+    }
 }

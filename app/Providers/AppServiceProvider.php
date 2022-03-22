@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
        view()->composer(
             'layouts.app',
             function ($view) {
-                $view->with('site', json_decode(Site::first()));
+                $view->with('site', Site::first());
             }
         );
    }

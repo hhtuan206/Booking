@@ -29,8 +29,10 @@ class BillController extends AdminController
 
         $grid->column('id', __('ID'));
         $grid->column('users.name');
-        $grid->billdetails()->display(function ($billdetails) {
-            $count = count($billdetails);
+        $grid->column('shipment');
+        $grid->column('status');
+        $grid->details()->display(function ($detail) {
+            $count = count($detail);
             return "<span class='label label-success'>{$count}</span>";
         });
         $grid->column('subtotal', __('Subtotal'));
@@ -47,19 +49,26 @@ class BillController extends AdminController
     protected function detail($id)
     {
         $show = new Show(Bill::findOrFail($id));
-
-        $show->field('id', __('Id'));
-        $show->user('User', function ($user) {
-            $user->name();
+        $show->field('shipment', __('Shipment'));
+        $show->field('status', __('Status'));
+        $show->users('User', function ($user) {
+           $user->name();
+           $user->email();
+           $user->phone();
+           $user->address();
         });
-        $show->billdetails('', function ($billdetails) {
-            $billdetails->products()->name();
-            $billdetails->quantity();
-            $billdetails->products()->price();
+
+        $show->details('Detail', function ($detail) {
+            $detail->product()->name();
+            $detail->product()->image()->image('', 100, 100);;
+            $detail->quantity();
+            $detail->product()->price();
+            $detail->disableCreation();
+            $detail->disableExport();
+            $detail->disableFilter();
         });
         $show->field('subtotal', __('Subtotal'));
         $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
 
         return $show;
     }
@@ -73,7 +82,14 @@ class BillController extends AdminController
     {
         $form = new Form(new Bill());
 
-        $form->number('user_id', __('User id'));
+        $form->select('user_id', "User")->options(User::all()->pluck('name', 'id'));
+        $form->radio("shipment", "Shipment")->options(['cod' => 'COD', 'banking'=> 'BANKING'])->default('COD');
+        $form->radio('status', "Status")->options(['Đang chờ' => 'Đang chờ', 'Đang chuẩn bị hàng'=> 'Đang chuẩn bị hàng','Đang vận chuyển'=> 'Đang vận chuyển','Thành công'=> 'Thành công'])->default('Đang chờ');
+        $form->hasMany('details', function (Form\NestedForm $form) {
+            $form->select('product_id', "Product")->options(Product::all()->pluck('name', 'id'));
+            $form->number('quantity', "Quantity");
+        });
+
         $form->text('subtotal', __('Subtotal'));
 
         return $form;

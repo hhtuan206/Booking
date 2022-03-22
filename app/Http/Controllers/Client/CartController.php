@@ -8,6 +8,8 @@ use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Models\HistoryOrder;
 use App\Models\Product;
+use App\Models\User;
+use App\Events\SendMailEvent;
 use Auth;
 use Cart;
 use Illuminate\Http\Request;
@@ -23,20 +25,20 @@ class CartController extends Controller
     public function addCart($id, $qty)
     {
         $product = Product::findOrFail($id);
-        if ($qty < $product->quantity) {
-            $data = [
-                'id' => $product->id,
-                'name' => $product->name,
-                'qty' => $qty,
-                'price' => $product->price,
-                'weight' => 0,
-                'options' => [
-                    'image' => $product->image,
-                ],
-            ];
-            Cart::add($data);
-            return redirect()->back()->with('success', 'Thêm thành công');
-        }
+//        if ($qty < $product->quantity) {
+        $data = [
+            'id' => $product->id,
+            'name' => $product->name,
+            'qty' => $qty,
+            'price' => $product->price,
+            'weight' => 0,
+            'options' => [
+                'image' => $product->image,
+            ],
+        ];
+        Cart::add($data);
+        return redirect()->back()->with('success', 'Thêm thành công');
+//        }
         return redirect()->back()->with('fail', 'Thêm thất bại');
 
     }
@@ -77,6 +79,8 @@ class CartController extends Controller
             $bill = Bill::insertGetId([
                 'user_id' => $user->id,
                 'subtotal' => Cart::subtotal(),
+                'shipment' => "COD",
+                'status' => "Đang chờ",
                 'created_at' => date("Y-m-d h:i:s"),
                 'updated_at' => date("Y-m-d h:i:s"),
             ]);
@@ -90,7 +94,7 @@ class CartController extends Controller
 
             }
 
-            Mail::to($user->email)->send(new MailNotify($user, Cart::content(), Cart::subTotal()));
+            event(new SendMailEvent($user,Cart::content(),Cart::subtotal()));
             Cart::destroy();
         } catch (Exception $e) {
             return redirect()->back()->with('Message', 'Đặt hàng thất bại');

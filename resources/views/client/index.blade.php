@@ -1,10 +1,10 @@
     @extends('layouts.app')
 
-    @section('content')      
+    @section('content')
     <!-- slider Area Start -->
     <div class="slider-area">
      <div class="bend niceties preview-1">
-      <div id="ensign-nivoslider" class="slides">	
+      <div id="ensign-nivoslider" class="slides">
        <img src="https://fortbragglibrary.org/wp-content/uploads/2017/12/Book-banner.jpg" alt="" title="#slider-direction-1"  />
        <img src="https://wallpapercave.com/wp/wp4650286.jpg" alt="" title="#slider-direction-2"  />
      </div>
@@ -38,12 +38,12 @@
       <a href="#" class="title-3">SEE MORE</a>
     </div>
     <!-- layer 4 -->
-  
+
   </div>
 </div>
 </div>
-<!-- slider Area End-->    
-<!-- Online Banner Area Start -->    
+<!-- slider Area End-->
+<!-- Online Banner Area Start -->
 <div class="online-banner-area">
   <div class="container">
     <div class="banner-title text-center">
@@ -74,8 +74,8 @@
     </div>
   </div>
 </div>
-<!-- Online Banner Area End -->   
-<!-- Shop Info Area Start -->   
+<!-- Online Banner Area End -->
+<!-- Shop Info Area Start -->
 
 <!-- Shop Info Area End -->
 <!-- Featured Product Area Start -->
@@ -88,9 +88,9 @@
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
           </ul>
-        </div>         
+        </div>
       </div>
-    </div>   
+    </div>
     <div class="row">
       <div class="product-list tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="arrival">
@@ -134,9 +134,9 @@
             @endforeach
           </div>
         </div>
-        
+
       </div>
-    </div>             
+    </div>
   </div>
 </div>
 <!-- Featured Product Area End -->
@@ -153,9 +153,9 @@
           <span class="fcount">
            <span class="counter">3725</span>
          </span>
-         <h3>BOOKS READ</h3>								
+         <h3>BOOKS READ</h3>
        </div>
-     </div>		                
+     </div>
    </div>
    <div class="col-md-3 col-sm-3 col-xs-6">
     <div class="single-counter wow" data-wow-duration="1.5s" data-wow-delay=".3s">
@@ -163,9 +163,9 @@
       <span class="fcount">
        <span class="counter">950</span>
      </span>
-     <h3>ONLINE USERS</h3>								
+     <h3>ONLINE USERS</h3>
    </div>
- </div>		                
+ </div>
 </div>
 <div class="col-md-3 col-sm-3 col-xs-6">
   <div class="single-counter wow" data-wow-duration="1.5s" data-wow-delay=".3s">
@@ -173,9 +173,9 @@
     <span class="fcount">
      <span class="counter">1450</span>
    </span>
-   <h3>BEST AUTHORS</h3>								
+   <h3>BEST AUTHORS</h3>
  </div>
-</div>		                
+</div>
 </div>
 <div class="col-md-3 col-sm-3 col-xs-6">
   <div class="single-counter wow" data-wow-duration="1.5s" data-wow-delay=".3s">
@@ -183,9 +183,9 @@
     <span class="fcount">
      <span class="counter">62</span>
    </span>
-   <h3>AWARDS</h3>								
+   <h3>AWARDS</h3>
  </div>
-</div>		                
+</div>
 </div>
 </div>
 </div>
@@ -207,7 +207,7 @@
             <div class="blog-info text-center">
               <a href="#"><h2>{{$blog->title}}</h2></a>
               <div class="blog-info-bottom">
-                <span class="blog-author">BY: <a href="#">{{$blog->user->name}}</a></span>
+                <span class="blog-author">BY: <a href="#"></a></span>
                 <span class="blog-date">{{date('d-m-Y', strtotime($blog->created_at))}}</span>
               </div>
             </div>
@@ -294,5 +294,5 @@
     </div>
   </div>
 </div>
-<!--End of Quickview Product-->			
+<!--End of Quickview Product-->
 @endsection

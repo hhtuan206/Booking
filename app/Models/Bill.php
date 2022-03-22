@@ -8,11 +8,11 @@ class Bill extends Model
 {
 
      protected $fillable = [
-        'subtotal', 'user_id',
+        'subtotal', 'user_id','shipment','status',
     ];
     //
-    
-    public function billdetails()
+
+    public function details()
     {
         return $this->hasMany(BillDetail::class,'bill_id');
     }
