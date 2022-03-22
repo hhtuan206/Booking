@@ -168,9 +168,8 @@
 										</div>
 										<p>{!! Str::limit($product->description,200,$end='...') !!}</p>
 										<div class="availability">
-											@if($product->quantity > 0)
+											@if($product->stock > 0)
 											<span>In stock</span>
-											<span><a href="cart.html">Add to cart</a></span>
 											@else
 											<span style="background: red;">Sold out</span>
 											@endif

@@ -28,7 +28,7 @@ class ProductController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Product());
-        $grid->quickSearch('product_name');
+        $grid->quickSearch('name');
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
         $grid->column('description', __('Description'));

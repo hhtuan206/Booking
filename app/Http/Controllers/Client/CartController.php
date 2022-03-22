@@ -53,13 +53,9 @@ class CartController extends Controller
     {
         $rowId = $request->rowId;
         $qty = $request->qty;
-        $product = Product::findOrFail($id);
-        if ($qty > $product->quantity) {
-            return redirect()->back()->with('fail', 'Cập nhật thất bại');
-
-        }
+        $product = Product::find(Cart::get($rowId))->first();
         Cart::update($rowId, $qty);
-        return redirect()->back()->with('fail', 'Cập nhật thất bại');
+        return redirect()->back()->with('success', 'Cập nhật thành công');
 
     }
 
