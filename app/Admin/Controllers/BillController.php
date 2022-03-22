@@ -9,6 +9,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use App\Models\User;
 use App\Models\Product;
+
 class BillController extends AdminController
 {
     /**
@@ -23,10 +24,12 @@ class BillController extends AdminController
      *
      * @return Grid
      */
+
+
     protected function grid()
     {
-        $grid = new Grid(new Bill());
 
+        $grid = new Grid(new Bill());
         $grid->column('id', __('ID'));
         $grid->column('users.name');
         $grid->column('shipment');
@@ -37,6 +40,17 @@ class BillController extends AdminController
         });
         $grid->column('subtotal', __('Subtotal'));
         $grid->column('created_at', __('Created at'));
+
+        $grid->quickSearch('users.name');
+        $grid->filter(function ($filter) {
+            $filter->disableIdFilter();
+            $filter->between('created_at', "Create At")->datetime();
+        });
+        $grid->export(function ($export) {
+            $export->except(['details']);
+        });
+
+
         return $grid;
     }
 
@@ -52,10 +66,10 @@ class BillController extends AdminController
         $show->field('shipment', __('Shipment'));
         $show->field('status', __('Status'));
         $show->users('User', function ($user) {
-           $user->name();
-           $user->email();
-           $user->phone();
-           $user->address();
+            $user->name();
+            $user->email();
+            $user->phone();
+            $user->address();
         });
 
         $show->details('Detail', function ($detail) {
@@ -83,8 +97,8 @@ class BillController extends AdminController
         $form = new Form(new Bill());
 
         $form->select('user_id', "User")->options(User::all()->pluck('name', 'id'));
-        $form->radio("shipment", "Shipment")->options(['cod' => 'COD', 'banking'=> 'BANKING'])->default('COD');
-        $form->radio('status', "Status")->options(['Đang chờ' => 'Đang chờ', 'Đang chuẩn bị hàng'=> 'Đang chuẩn bị hàng','Đang vận chuyển'=> 'Đang vận chuyển','Thành công'=> 'Thành công'])->default('Đang chờ');
+        $form->radio("shipment", "Shipment")->options(['cod' => 'COD', 'banking' => 'BANKING'])->default('COD');
+        $form->radio('status', "Status")->options(['Đang chờ' => 'Đang chờ', 'Đang chuẩn bị hàng' => 'Đang chuẩn bị hàng', 'Đang vận chuyển' => 'Đang vận chuyển', 'Thành công' => 'Thành công'])->default('Đang chờ');
         $form->hasMany('details', function (Form\NestedForm $form) {
             $form->select('product_id', "Product")->options(Product::all()->pluck('name', 'id'));
             $form->number('quantity', "Quantity");

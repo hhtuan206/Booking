@@ -25,7 +25,7 @@
 				<tbody>
 					<?php $i = 1; ?>
 
-					@foreach($bill->billdetails()->get() as $detail)
+					@foreach($bill->details()->get() as $detail)
 					<tr>
 						<th class="row">{{$i++}}</th>
 						<th>
