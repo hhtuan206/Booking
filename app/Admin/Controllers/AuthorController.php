@@ -25,7 +25,7 @@ class AuthorController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Author());
-
+        $grid->quickSearch('name');
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
         $grid->column('created_at', __('Created at'));

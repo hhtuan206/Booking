@@ -25,7 +25,7 @@ class CategoryController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Category());
-
+        $grid->quickSearch('name');
         $grid->column('id', __('Id'));
         $grid->column('name', __('Category name'));
 
