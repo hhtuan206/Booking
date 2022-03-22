@@ -6,7 +6,7 @@
 <div class="map-area">
  <div id="googleMap" style="width:100%;height:445px;"></div>
 </div>
-<!-- Map Area End -->	
+<!-- Map Area End -->
 <!-- Address Information Area Start -->
 <div class="address-info-area section-padding">
  <div class="container">
@@ -19,11 +19,11 @@
                </div>
                <div class="info">
                    <h3>PHONE</h3>
-                   <p>+(02)-12345-6789-55</p>
-                   <p>+(05)-15689-5698-44</p>
+                   <p>{{$site->phone}}</p>
+
                </div>
            </div>
-       </div>						
+       </div>
    </div>
    <div class="col-md-4 col-sm-6">
       <div class="address-single">
@@ -33,11 +33,10 @@
            </div>
            <div class="info">
                <h3>ADDRESS</h3>
-               <p>Mhilara Street 205,</p>
-               <p>Roitan city, USA.</p>
+               <p>{{$site->adress}}</p>
            </div>
        </div>
-   </div>						
+   </div>
 </div>
 <div class="col-md-4 col-sm-6">
   <div class="address-single no-margin">
@@ -47,11 +46,11 @@
        </div>
        <div class="info">
            <h3>E-MAIL</h3>
-           <p>info123@gmail.com</p>
-           <p>www.companyweb.com</p>
+           <p>{{$site->email}}</p>
+
        </div>
    </div>
-</div>					
+</div>
 </div>
 </div>
 </div>
@@ -72,7 +71,7 @@
                       <input type="text" placeholder="Your Name" />
                       <input type="email" placeholder="Your Email" />
                       <input type="text" placeholder="Your phone"/>
-                  </div>								
+                  </div>
               </div>
               <div class="col-md-7">
                <div class="contact-form-right">
@@ -108,5 +107,5 @@ var marker = new google.maps.Marker({
 });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
-</script>		
+</script>
 @endsection

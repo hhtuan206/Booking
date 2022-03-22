@@ -51,7 +51,7 @@
             <div class="col-md-2 col-sm-6 col-xs-6">
                 <div class="header-logo">
                     <a href="/">
-                        <img src="{{$site->logo}}" alt="" width="200px" height="50px">
+                        <img src="{{asset($site->logo)}}" alt="" width="200px" height="50px">
                     </a>
                 </div>
             </div>
